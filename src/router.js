@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Login from './views/Login';
 
 Vue.use(Router);
 
@@ -10,16 +10,35 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'login',
+      component: Login, // Eager Loading of view
+    }, {
+      path: '/dash-home',
       name: 'home',
-      component: Home,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      component: () => import('./views/Home'), // Lazy Loading of view
+      children: [
+        {
+          path: '/d',
+          name: 'D',
+          component: () => import('./views/D'), // Lazy Loading of view
+        }, {
+          path: '/i',
+          name: 'i',
+          component: () => import('./views/I'), // Lazy Loading of view
+        }, {
+          path: '/s',
+          name: 's',
+          component: () => import('./views/S'), // Lazy Loading of view
+        }, {
+          path: '/help',
+          name: 'help',
+          component: () => import('./views/Help'), // Lazy Loading of view
+        },
+      ],
+    }, {
+      path: '/contact',
+      name: 'contactus',
+      component: () => import('./views/ContactUs'), // Lazy Loading of view
     },
   ],
 });
