@@ -1,4 +1,9 @@
-# vuepos
+# vue-boilerplate
+
+Simple and extensible vue boilerplate, with 
+1. vue-router
+2. vuex
+3. axios
 
 ## Project setup
 ```
