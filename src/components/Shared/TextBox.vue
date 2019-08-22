@@ -1,14 +1,35 @@
 <template>
-  <input :type="type" :placeholder="pholder" />
+  <input
+    autocomplete="off"
+    :id="id"
+    :type="type"
+    :placeholder="pholder"
+    v-on:input="(e) => this.$emit('textChangeEvent', e)"
+  />
 </template>
 
 <script>
 export default {
   name: 'TextBox',
   props: {
-    pholder: String,
-    type: String,
+    id: {
+      type: String,
+      required: true,
+    },
+    pholder: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
   },
+  // data() {
+  //   return {
+  //     textValue: this.value,
+  //   };
+  // },
 };
 </script>
 

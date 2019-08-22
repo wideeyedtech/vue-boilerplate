@@ -4,18 +4,30 @@
       <div class="login-leftarea"></div>
       <div class="login-rightarea">
         <div class="login-rightcontent">
-          <div>
-            <TextBox type="text" pholder="User Name" />
-            <TextBox type="password" pholder="Password" />
-          </div>
-          <div class="login-actions">
-            <router-link to="/d">
-              <Button value="Login" type="primary" />
-            </router-link>
-            <router-link to="/contact">
-              <Button value="Contact" type="primary" />
-            </router-link>
-          </div>
+          <form>
+            <div>
+              <TextBox
+                id="uName"
+                type="text"
+                pholder="User Name"
+                v-on:textChangeEvent="handleTextChange"
+              />
+              <TextBox
+                id="password"
+                type="password"
+                pholder="Password"
+                v-on:textChangeEvent="handleTextChange"
+              />
+            </div>
+            <div class="login-actions">
+              <router-link to="/d">
+                <Button value="Login" type="primary" />
+              </router-link>
+              <router-link to="/contact">
+                <Button value="Contact" type="primary" />
+              </router-link>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -33,6 +45,12 @@ export default {
     TextBox,
     Button,
   },
+  data() {
+    return {
+      uname: '',
+      password: '',
+    };
+  },
   // get the state from vuex using computed
   computed: {
     ...mapGetters(['getCredentials']),
@@ -42,6 +60,14 @@ export default {
     // Call actions in vuex
     ...mapActions(['authenticate']),
     // call events in below
+    handleTextChange(e) {
+      const { id, value } = e.target;
+      if (id === 'uName') {
+        this.uname = value;
+      } else {
+        this.password = value;
+      }
+    },
   },
   // Lifecycle method to call disptch your actions on page load
   created() {
