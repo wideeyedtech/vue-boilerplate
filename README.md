@@ -5,6 +5,14 @@ Simple and extensible vue boilerplate, with
 2. vuex
 3. axios
 
+# Reusable Components with mobile support
+```
+TextBox
+TextArea
+Button
+
+```
+
 ## Project setup
 ```
 npm install
