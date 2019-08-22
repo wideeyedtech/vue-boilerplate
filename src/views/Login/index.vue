@@ -64,7 +64,7 @@ export default {
       const { id, value } = e.target;
       if (id === 'uName') {
         this.uname = value;
-      } else {
+      } else if (id === 'password') {
         this.password = value;
       }
     },
