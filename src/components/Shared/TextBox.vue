@@ -25,11 +25,6 @@ export default {
       required: true,
     },
   },
-  // data() {
-  //   return {
-  //     textValue: this.value,
-  //   };
-  // },
 };
 </script>
 
